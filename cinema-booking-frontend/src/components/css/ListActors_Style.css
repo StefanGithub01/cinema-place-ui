@@ -1,0 +1,38 @@
+.white {
+    color: white;
+}
+
+.text-center {
+    margin-top: 100px;
+    color: white;
+    text-align: center;
+}
+
+.actor-container1 {
+    margin-top:20px;
+}
+
+.actor-info1{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.actor-info1:hover{
+    background-color: rgb(255, 200, 98);
+    width: 100%;
+    height: 100%;
+}
+.actor-image1 {
+    width: 120px; /* Adjust the size as needed */
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .actor-details1 {
+    flex: 1; /* Take up remaining space */
+  }
+  
+  .actor-details1 p {
+    margin: 0;
+  }

@@ -1,0 +1,157 @@
+body {
+    background: linear-gradient(to right, #20232a, #1f2227);
+    color: #fff; /* Set text color to white for better contrast */
+  }
+
+.movie-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px; /* Increase the gap for better spacing */
+    padding: 50px;
+}
+
+.movie-card {
+    width: 275px;
+    padding: 5px; /* Increase padding for better spacing */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+
+.movie-detail {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.movie-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align movie details in the center */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.play-button-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+}
+
+.play-button-icon {
+    font-size: 1.8rem; /* Adjust the font size as needed */
+}
+
+.showtimes-container {
+    margin-top: 20px;
+}
+
+.showtimes-list {
+    list-style: none;
+    padding: 0;
+}
+
+.showtime-item {
+    margin-bottom: 10px;
+}
+
+.showtime-button button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.showtime-button button:hover {
+    background-color: #0056b3;
+}
+
+.genre-buttons-container {
+    margin-top: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.genre-buttons-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.genre-buttons-container button:hover {
+    background-color: #0056b3;
+}
+
+.movie-text-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.movie-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; /* Add gap between movie details */
+}
+
+.movie-details p {
+    margin: 0; /* Remove default margin */
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.trailer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.actors-container {
+    margin-top: 10px;
+  }
+  
+  .actor-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .actor-image {
+    width: 120px; /* Adjust the size as needed */
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .actor-details {
+    flex: 1; /* Take up remaining space */
+  }
+  
+  .actor-details p {
+    margin: 0;
+  }
+

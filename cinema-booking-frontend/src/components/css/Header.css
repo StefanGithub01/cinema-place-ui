@@ -1,0 +1,98 @@
+/* Header.css (or any other CSS file) */
+
+/* Navbar styles */
+/*   background-color: #ce8f31; /* Dark background color */
+
+.navbar {
+  background-color: red; /* Dark background color */
+  display:block;
+}
+
+/* Brand styles */
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffc107; /* Gold text color */
+}
+
+/* Links styles */
+.nav-link {
+  color: #ffffff; /* White text color */
+  margin-right: 15px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Hover effect on links */
+.nav-link:hover {
+  color: #17a2b8; /* Light blue text color on hover */
+}
+
+/* Active link styles */
+.nav-link.active {
+  color: #17a2b8; /* Light blue text color for active link */
+}
+
+/* Login buttons container styles */
+.login-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align to the right */
+  width: 100%; /* Ensure the full width of the container */
+}
+
+/* User greeting styles */
+.nav-link.greeting {
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+/* Logout button styles */
+.logout-button {
+  margin-left: 15px;
+}
+
+/* Filter buttons container styles */
+.filter-buttons-container {
+  background-color: #333; /* Dark background color */
+  padding: 10px 20px;
+}
+
+/* Filter button styles */
+.filter-button {
+  color: #ffffff; /* White text color */
+  background-color: transparent; /* Transparent background */
+  border: none;
+  margin-right: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Hover effect on filter buttons */
+.filter-button:hover {
+  color: red; /* Light blue text color on hover */
+}
+
+/* Add this CSS code to show/hide the submenu */
+.submenu {
+  position: absolute;
+  top: 80%;
+  left: 10;
+  display: block;
+  background-color: #343a40; /* Background color */
+  min-width: 160px;
+  z-index: 1;
+}
+
+.submenu .nav-link {
+  padding: 10px;
+  color: #ffffff; /* Text color */
+  text-decoration: none;
+}
+
+.submenu .nav-link:hover {
+  background-color: #495057; /* Hover background color */
+}
+

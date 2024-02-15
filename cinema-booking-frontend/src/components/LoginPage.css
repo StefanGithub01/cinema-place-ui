@@ -1,0 +1,47 @@
+/* LoginPage.css */
+.login-form {
+  max-width: 400px;
+  margin: 100px auto; /* Adjusted margin for better positioning */
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added a subtle box shadow */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center; /* Align items horizontally to the center */
+  margin-top: 30px; /* Adjust margin as needed */
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.submit-button:hover{
+  background-color: #225024;
+}
+
