@@ -29,7 +29,7 @@ const ActorMoviesComponent = () => {
     return (
         <div>
             <br/><br/><br/><br/>
-            <h2 className='white'>Movies for Actor: </h2>
+            <h2 className='white'>Cast in: </h2>
 
             {/* Iterate over the movies array and render each movie card */}
             {movies.map(movie => (

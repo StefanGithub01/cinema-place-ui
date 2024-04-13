@@ -20,15 +20,14 @@ const ListActorComponent = () => {
 
     function handleActorClick(actorId) {
         navigator(`/movies/actor/${actorId}`);
-      }
+    }
 
     return (
         <div className='container'>
             <h2 className='text-center'>List of Actors</h2>
             <div className="actor-container1">
                 {actors.map(actor => (
-                    <div key={actor.actorId} className="actor-info1"
-                    onClick={() => handleActorClick(actor.actorId)}>
+                    <div key={actor.actorId} className="actor-info1" onClick={() => handleActorClick(actor.actorId)} style={{ cursor: 'pointer' }}>
                         <img src={actor.avatarImageUrl} alt={`${actor.firstName} ${actor.lastName}`} className="actor-image1" />
                         <div className="actor-details1">
                             <p><b>{actor.firstName} {actor.lastName}</b></p>

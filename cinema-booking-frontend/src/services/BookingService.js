@@ -11,5 +11,7 @@ export const createBooking = (userId, showtimeId, selectedSeats, date) => {
 
 export const listBookingsForUserId = (userId) => axios.get(`${REST_API_BASE_URL}/${userId}`);
 
+export const listAllBookings= () => axios.get(`${REST_API_BASE_URL}/all`);
+
 // Function to cancel a booking by its ID
 export const cancelBooking = (bookingId) => axios.delete(`${REST_API_BASE_URL}/${bookingId}`);

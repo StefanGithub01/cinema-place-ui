@@ -1,0 +1,129 @@
+/* Add this CSS to your existing CSS file or style tag */
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%; /* Adjust the width as needed */
+  padding: 8px; /* Adjust the padding as needed */
+  margin: 4px 0; /* Adjust the margin as needed */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+/* BUTTONS */
+.buttonAdmin {
+  margin-right: 10px;
+  background-color: #2d5fe9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.buttonAdminNoMargin {
+  background-color: #2d5fe9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonAdminNoMargin:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.buttonAdmin:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cancel-buttonAdmin {
+  background-color: rgb(212, 20, 20);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+.cancel-buttonAdmin:hover {
+  background-color: darkred;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.p-datatable-custom .p-datatable .p-datatable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #333; /* Table border */
+}
+
+.p-datatable-custom .p-datatable .p-datatable-thead > tr > th {
+  background-color: #333; /* Header background color */
+  color: white; /* Header text color */
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #222; /* Header bottom border */
+}
+
+.p-datatable-custom .p-datatable .p-datatable-tbody > tr > td {
+  background-color: #444; /* Row background color */
+  color: white; /* Row text color */
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #333; /* Row bottom border */
+}
+
+.p-datatable-custom .p-datatable .p-datatable-tbody > tr:last-child > td {
+  border-bottom: none; /* Remove bottom border for the last row */
+}
+
+.p-datatable-custom .p-datatable .p-paginator {
+  background-color: #333; /* Paginator background color */
+  color: white; /* Paginator text color */
+}
+
+.p-datatable-custom .p-paginator .p-paginator-current-page {
+  color: white; /* Paginator current page text color */
+}
+
+.p-datatable-custom .p-paginator .p-paginator-pages {
+  color: white; /* Paginator pages text color */
+}
+
+.viewshowtimes-seat.available {
+  background-color: white; /* Available seat color */
+}
+
+.viewshowtimes-seat.taken {
+  background-color: #f44336; /* Taken seat color */
+}
+
+.edit-review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}

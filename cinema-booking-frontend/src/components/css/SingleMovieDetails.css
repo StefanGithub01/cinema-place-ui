@@ -1,0 +1,64 @@
+/* SingleMovieDetails.css */
+
+.single-movie-container {
+    padding: 20px;
+    color: white; /* Set text color to white */
+}
+
+.single-movie-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Add gap between movie details */
+}
+
+.single-movie-details .movie-header {
+    text-align: center; /* Align text to the center */
+}
+
+.single-movie-details .movie-poster-and-trailer {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Align items to the center */
+    margin-bottom: 20px;
+}
+
+.single-movie-details .movie-poster img {
+    width: 250px; /* Adjusted width */
+    height: auto;
+    margin-right: 20px;
+}
+
+.single-movie-details .movie-trailer iframe {
+    width: 650px; /* Adjusted width */
+    height: 350px; /* Adjusted height */
+}
+
+.single-movie-details .movie-info p {
+    text-align: center; /* Align text to the center */
+}
+
+.single-movie-details .actors {
+    text-align: center; /* Align text to the center */
+}
+
+.single-movie-details .actor-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Align items to the center */
+}
+
+.single-movie-details .actor {
+    width: 120px;
+    margin-right: 20px;
+}
+
+.single-movie-details .actor img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 5px;
+}
+.single-button-group {
+    display: flex;
+    gap: 5px; /* Adjust the gap between buttons */
+}

@@ -62,3 +62,28 @@
 .buy-tickets-button:hover {
   background-color: #45a049; /* Button color on hover */
 }
+
+.loading-indicator {
+  margin-top: 50px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 223, 42, 0.8);
+  padding: 50px; /* Increase padding to make it larger */
+  border-radius: 50px; /* Increase border-radius for a smoother appearance */
+  z-index: 9999;
+}
+
+.rotating {
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

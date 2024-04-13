@@ -57,6 +57,7 @@ const ListReviewsForUser = () => {
             <th>Nr.</th>
             <th>Movie</th>
             <th>Rating</th>
+            <th>Title</th>
             <th>Comment</th>
             <th>Review Date</th>
             <th>Remove Review</th>
@@ -68,6 +69,7 @@ const ListReviewsForUser = () => {
               <td>{reviewNumber++}</td>
               <td><img src={review.movie.posterImageUrl} alt={review.movie.title} style={{ width: '100px' }} /> </td>
               <td>{review.ratingScore} {getRatingIndicator(review.ratingScore)}</td>
+              <td>{review.title}</td>
               <td>{review.comment}</td>
               <td>{formatDate(review.date)}</td>
               <td>

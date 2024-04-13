@@ -1,108 +1,169 @@
 import React, { useEffect, useState } from 'react';
-import { listReviews } from '../services/ReviewService';
+import { useParams } from 'react-router-dom';
+import { getReviewsByMovieId, agreeReview, disagreeReview } from '../services/ReviewService';
+import { getSingleMovie } from '../services/MovieService';
 import { useAuth } from './header/AuthContext';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import './css/ListMovieComponent.css'; // Import your CSS file
+import Image from 'react-bootstrap/Image';
+import { Button } from 'react-bootstrap';
+import { listVotedReviews } from '../services/UserService';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import './css/ListReviewComponent.css';
+
+// Helper function to format date
+const formatDate = (dateString) => {
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  return new Date(dateString).toLocaleDateString('en-US', options);
+};
 
 const ListReviewComponent = () => {
+  const { movieId, posterImageUrl } = useParams();
   const [reviews, setReviews] = useState([]);
+  const [votedReviewIds, setVotedReviewIds] = useState([]);
   const { user } = useAuth();
+  const [movieData, setMovieData] = useState(null); // State to hold movie data
+  const [totalVotes, setTotalVotes] = useState(0);
+  const [ratingConsensus, setRatingConsensus] = useState(0);
+  const [sortCriteria, setSortCriteria] = useState('upvotes'); // State for sorting criteria
 
   useEffect(() => {
-    listReviews()
+    fetchReviews();
+    if (user) {
+      updateVotedReviewIds(user.userId);
+    }
+    // Fetch movie data when component mounts
+    getSingleMovie(movieId)
       .then((response) => {
-        setReviews(response.data);
+        setMovieData(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [user, movieId, sortCriteria]);
 
-  // Group reviews by movie poster
-  const groupedReviews = reviews.reduce((acc, review) => {
-    const posterUrl = review.movie ? review.movie.posterImageUrl : 'N/A';
-    acc[posterUrl] = acc[posterUrl] || [];
-    acc[posterUrl].push(review);
-    return acc;
-  }, {});
+  useEffect(() => {
+    if (reviews.length > 0) {
+      const totalRating = reviews.reduce((sum, review) => sum + review.ratingScore, 0);
+      setRatingConsensus(totalRating / reviews.length);
+      setTotalVotes(reviews.length);
+    }
+  }, [reviews]);
 
-  // Calculate the total number of reviews for each movie
-  const reviewsCountByMovie = Object.keys(groupedReviews).reduce((acc, posterUrl) => {
-    acc[posterUrl] = groupedReviews[posterUrl].length;
-    return acc;
-  }, {});
+  const fetchReviews = () => {
+    getReviewsByMovieId(movieId)
+      .then((response) => {
+        // Sort reviews based on the selected sorting criteria
+        const sortedReviews = response.data.sort((a, b) => {
+          if (sortCriteria === 'lowestGrade') {
+            return a.ratingScore - b.ratingScore;
+          } else if (sortCriteria === 'highestGrade') {
+            return b.ratingScore - a.ratingScore;
+          } else {
+            // Default sorting by upvotes
+            return b.upvotes - a.upvotes;
+          }
+        });
+        setReviews(sortedReviews);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-  // Calculate the sum of all the reviews left so far
-  const totalReviewsCount = Object.values(reviewsCountByMovie).reduce((sum, count) => sum + count, 0);
+  const updateVotedReviewIds = (userId) => {
+    listVotedReviews(userId)
+      .then((response) => {
+        setVotedReviewIds(response.data.map(review => review.reviewId));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleAgree = (userId, reviewId) => {
+    agreeReview(userId, reviewId)
+      .then(() => {
+        fetchReviews(); // Fetch updated reviews after agreeing
+        updateVotedReviewIds(userId);
+      });
+  };
+
+  const handleDisagree = (userId, reviewId) => {
+    disagreeReview(userId, reviewId)
+      .then(() => {
+        fetchReviews(); // Fetch updated reviews after disagreeing
+        updateVotedReviewIds(userId);
+      });
+  };
 
   return (
     <div className="container">
-      <br/><br/><br/>
-      <h2 className="text-center" style={{ color: 'white' }}>All Reviews:</h2>
-      <p className="text-center" style={{ color: 'white' }}>Total number: {totalReviewsCount}</p>
-      <br/>
-      <Row xs={1} md={2} lg={3} xl={4} className="g-4">
-        {Object.keys(groupedReviews).map((posterUrl) => (
-          <Col key={posterUrl}>
-            <Card className="h-100 shadow">
-              <Card.Img variant="top" src={posterUrl} alt="Movie Poster" />
-              <Card.Body>
-                <Card.Title className="mb-3">
-                  <h3>{groupedReviews[posterUrl][0].movie ? groupedReviews[posterUrl][0].movie.title : 'N/A'}</h3>
-                </Card.Title>
-                {/* Calculate average rating for the movie */}
-                <Card.Text>
-                  <b>Rating Consensus:</b> {calculateAverageRating(groupedReviews[posterUrl])} {getRatingIndicator(calculateAverageRating(groupedReviews[posterUrl]))} 
-                </Card.Text>
-                <Card.Text>
-                  <b>Reviews Nr:</b> {reviewsCountByMovie[posterUrl]}
-                </Card.Text>
-                {groupedReviews[posterUrl].map((review, index) => (
-                  <div key={review.reviewId}>
-                    <hr className="review-divider" />
-                    <Card.Text>
-                      <b>User:</b> {review.user ? review.user.username : 'N/A'}
-                    </Card.Text>
-                    <Card.Text className="mb-2">
-                      <b>Rating:</b> {review.ratingScore} {getRatingIndicator(review.ratingScore)}
-                    </Card.Text>
-                    <Card.Text className="mb-2">
-                      <b>Comment:</b> <br /> {review.comment}
-                    </Card.Text>
-                    {index < groupedReviews[posterUrl].length - 1 && <hr className="review-divider" />}
+      {movieData && ( // Render only if movieData is available
+        <div className="movie-card-review">
+          <br/><br/><br/>
+          <Row className="justify-content-center align-items-center">
+            <Col xs={6}>
+              <Image src={movieData.posterImageUrl} fluid style={{ maxWidth: '140px', maxHeight: '180px' }} />
+            </Col>
+            <Col xs={6}>
+              <div className="text-white">
+                <p>{movieData.title}</p>
+                <h2>User Reviews:</h2>
+                <p className='review-meta'>Total Votes: {totalVotes}</p>
+                <p className='review-meta'>Rating Consensus: {ratingConsensus.toFixed(1)}/10</p>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      )}
+      <div className="reviews">
+          <div className="sorting-options">
+              <label className='text-white'>Sort by:</label>
+              <select value={sortCriteria} onChange={(e) => setSortCriteria(e.target.value)}>
+                <option value="upvotes">Most Helpful</option>
+                <option value="lowestGrade">Lowest Grade</option>
+                <option value="highestGrade">Highest Grade</option>
+              </select>
+            </div>
+        {reviews.map((review) => (
+          <Card key={review.reviewId} className="mb-3">
+            <Card.Body>
+              <div className="review-header">
+                <div className="review-rating">
+                  <FontAwesomeIcon icon={faStar} className="star-icon" />
+                   {review.ratingScore}/10
+                </div>
+                <div className="review-title">
+                  <b>{review.title}</b>
+                </div>
+                <div className="review-meta">
+                  <p><i>{review.user ? review.user.username : 'N/A'} - {formatDate(review.date)}</i></p>
+                </div>
+              </div>
+              <div className="review-comment">
+                {review.comment}
+                <hr/>
+              </div>
+              <div className="review-actions">
+              <p className='voting-text'>{review.agreeCount} out of {review.agreeCount + review.disagreeCount} found this helpful.</p>
+                {!votedReviewIds.includes(review.reviewId) ? (
+                  <div>
+                    <Button variant="success" onClick={() => handleAgree(user.userId, review.reviewId)}>Agree</Button>
+                    <Button variant="danger" onClick={() => handleDisagree(user.userId, review.reviewId)}>Disagree</Button>
                   </div>
-                ))}
-              </Card.Body>
-            </Card>
-          </Col>
+                ) : (
+                  <p className="text-muted">(You already voted)</p>
+                )}
+              </div>
+            </Card.Body>
+          </Card>
         ))}
-      </Row>
+      </div>
     </div>
   );
-};
-
-// Helper function to get rating indicator based on score
-const getRatingIndicator = (ratingScore) => {
-  if (ratingScore >= 8) {
-    return '🥇';
-  } else if (ratingScore >= 6) {
-    return '🥈';
-  } else if (ratingScore >= 5) {
-    return '🥉';
-  } else if (ratingScore < 5) {
-    return '💩';
-  } else {
-    return 'No rating indicator';
-  }
-};
-
-// Helper function to calculate average rating for a movie
-const calculateAverageRating = (reviews) => {
-  const totalRating = reviews.reduce((sum, review) => sum + review.ratingScore, 0);
-  const averageRating = totalRating / reviews.length;
-  return averageRating.toFixed(2);
 };
 
 export default ListReviewComponent;

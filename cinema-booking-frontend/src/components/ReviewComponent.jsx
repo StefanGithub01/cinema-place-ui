@@ -6,6 +6,7 @@ import { useAuth } from './header/AuthContext';
 const ReviewComponent = () => {
   const [ratingScore, setRatingScore] = useState('');
   const [comment, setComment] = useState('');
+  const [title, setTitle] = useState('');
   const { movieId, posterImageUrl } = useParams();
   const navigator = useNavigate();
   const { user } = useAuth();
@@ -21,6 +22,7 @@ const ReviewComponent = () => {
     const review = {
       userId: user.userId,
       movieId,
+      title,
       ratingScore,
       comment,
     };
@@ -29,11 +31,13 @@ const ReviewComponent = () => {
       .then((response) => {
         console.log(response.data);
         alert("Review Posted");
-        navigator('/reviews');
+        const encodedPosterImageUrl = encodeURIComponent(posterImageUrl);
+        navigator(`/reviews/${movieId}/${encodedPosterImageUrl}`);
       })
       .catch((error) => {
         console.error('Error creating review:', error);
         alert("Something went wrong, review not posted");
+        console.log("Review that tried to be sent:", review);
       });
   }
 
@@ -49,6 +53,7 @@ const ReviewComponent = () => {
             <h2 className="card-header text-center">Add Review</h2>
             <div className="card-body">
               <form>
+
                 <div className="mb-3">
                   <label className="form-label">Rating Score:</label>
                   <input
@@ -67,6 +72,18 @@ const ReviewComponent = () => {
                     max="10"
                   />
                 </div>
+
+                <div className="mb-3">
+                  <label className="form-label">Title:</label>
+                    <input
+                     type="text"
+                     placeholder='Enter review title'
+                     name="title" 
+                     value={title}
+                     className="form-control" 
+                     onChange={(e) => setTitle(e.target.value)}/>
+                </div>
+
                 <div className="mb-4">
                   <label className="form-label">Comment:</label>
                   <textarea

@@ -1,0 +1,43 @@
+/* PrizeWheel.css */
+
+/* Use a unique class name specific to the PrizeWheel component */
+.prize-wheel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.prizes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.prize {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+}
+
+.prize.selected {
+  background-color: #ffc107;
+}
+
+.prize-wheel-container button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.prize-wheel-container .result {
+  margin-top: 20px;
+  font-weight: bold;
+}

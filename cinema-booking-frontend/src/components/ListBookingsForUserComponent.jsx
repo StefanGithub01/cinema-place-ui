@@ -59,7 +59,8 @@ const ListBookingsForUserComponent = () => {
             <th>Nr</th>
             <th>Movie</th>
             <th>Showtime</th>
-            <th>Booked Seat Row-Column</th>
+            <th>Cinema</th>
+            <th>Booked Seat</th> {/* Change header */}
             <th>Booking Date</th>
             <th>Cancel Booking</th>
           </tr>
@@ -75,7 +76,8 @@ const ListBookingsForUserComponent = () => {
                 </div>
               </td>
               <td>{formatTimeRange(booking.showtime.startTime, booking.showtime.endTime)}</td>
-              <td>{booking.bookedSeats}</td>
+              <td><p>{booking.showtime.cinema.name} - {booking.showtime.cinema.location}</p></td>
+              <td>{booking.bookedSeats.split(',').map(seat => `Row ${seat.split('-')[0]} Seat ${seat.split('-')[1]}`).join(', ')}</td> {/* Change logic */}
               <td>{formatDate(booking.date)}</td>
               <td>
                 <button className="cancel-button" onClick={() => handleCancelBooking(booking.bookingId)}>X</button>

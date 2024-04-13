@@ -1,0 +1,25 @@
+.star-icon {
+  color:#d19513;
+}
+.review-rating {
+  margin-bottom: 10px;
+}
+.movie-card-review {
+  background: linear-gradient(135deg, #333333, #1a1a1a); /* Gradient from dark gray to black */
+}
+.review-meta {
+  font-size: 13px;
+}
+
+.voting-text{
+  font-size: 12px;
+}
+
+.review-actions {
+  align-items: left;
+  justify-content: space-between; /* Add space between buttons */
+}
+
+.review-actions button {
+  margin-right: 5px; /* Add margin to the right of each button */
+}

@@ -8,8 +8,19 @@ export const AuthProvider = ({ children }) => {
 
   const login = (userData) => {
     // Set the user context value with user data
+    setUser({ 
+      userId: userData.userId, 
+      username: userData.username,
+      isAdmin: userData.isAdmin  // Add isAdmin property
+    });
+  };
+  
+  /*
+    const login = (userData) => {
+    // Set the user context value with user data
     setUser({ userId: userData.userId, username: userData.username });
   };
+  */
 
   const logout = () => {
     // Logic for logging out and resetting the user context value

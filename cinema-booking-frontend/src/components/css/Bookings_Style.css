@@ -1,19 +1,19 @@
 .cancel-button {
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .cancel-button:hover {
-    background-color: darkred;
-  }
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
 
-  .title {
-    color: white;
-    text-align: center;
-    margin-top:70px;
-    margin-bottom: 15px;
-  }
+.cancel-button:hover {
+  background-color: darkred;
+}
+
+.title {
+  color: white;
+  text-align: center;
+  margin-top:70px;
+  margin-bottom: 15px;
+}

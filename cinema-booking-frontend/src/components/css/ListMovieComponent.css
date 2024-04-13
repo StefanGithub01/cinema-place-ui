@@ -1,157 +1,402 @@
 body {
-    background: linear-gradient(to right, #20232a, #1f2227);
-    color: #fff; /* Set text color to white for better contrast */
-  }
+  background: linear-gradient(to right, #20232a, #1f2227);
+  color: #fff; /* Set text color to white for better contrast */
+}
 
 .movie-list-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px; /* Increase the gap for better spacing */
-    padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px; /* Increase the gap for better spacing */
+  padding: 30px;
 }
 
 .movie-card {
-    width: 275px;
-    padding: 5px; /* Increase padding for better spacing */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    margin-bottom: 20px;
+  width: 275px;
+  height: auto;
+  padding: 10px; /* Increase padding for better spacing */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 20px;
+  overflow: hidden; /* Prevent content overflow */
 }
 
 .movie-card:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .movie-detail {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Ensure proper alignment of content */
 }
 
 .movie-poster img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
-.movie-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Align movie details in the center */
-    text-align: center;
-    margin-bottom: 20px;
-}
+
+
 
 .play-button-icon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
 }
 
 .play-button-icon {
-    font-size: 1.8rem; /* Adjust the font size as needed */
+  font-size: 1.8rem; /* Adjust the font size as needed */
 }
 
 .showtimes-container {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .showtimes-list {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .showtime-item {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .showtime-button button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
 }
 
 .showtime-button button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
+
+.no-filter-button {
+  padding: 10px;
+  background-color:#ffffff ;
+  color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.no-filter-button:hover {
+  background-color:#afabab ;
+}
+
+
+/* Filter Buttons Selection Display */
+
+.unselected-button {
+  padding: 10px;
+  background-color:#2d5fe9 ;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.selected-button {
+  padding: 10px;
+  background-color: #40b12a ; /* Darker shade of blue */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.unselected-button:hover {
+  background-color: #0056b3;
+}
+.selected-button:hover {
+  background-color: #2d791e;
+}
+
+/* Duration Filter Buttons */
+.duration-buttons-container {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Genre Buttons */
 
 .genre-buttons-container {
-    margin-top: 70px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
 }
 
+/*
 .genre-buttons-container button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  padding: 10px;
+  background-color: #2d5fe9;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
-
+*/
+/*
 .genre-buttons-container button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
+}
+*/
+
+.movie-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align movie details in the center */
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .movie-text-title {
-    font-size: 1.7rem;
-    font-weight: 700;
+  height: 2.3em; /* Set a fixed height for two rows of text */
+  font-size: 1.7rem;
+  font-weight: 700;
+  display: flex; /* Use flexbox */
+  align-items: center; /* Vertically center the text */
+  justify-content: center; /* Horizontally center the text */
 }
 
 .movie-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px; /* Add gap between movie details */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px; /* Add gap between movie details */
 }
 
 .movie-details p {
-    margin: 0; /* Remove default margin */
-    font-size: 1.2rem;
-    font-weight: 500;
+  margin: 0; /* Remove default margin */
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .trailer-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .actors-container {
-    margin-top: 10px;
-  }
-  
-  .actor-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .actor-image {
-    width: 120px; /* Adjust the size as needed */
-    height: auto;
-    margin-right: 10px;
-  }
-  
-  .actor-details {
-    flex: 1; /* Take up remaining space */
-  }
-  
-  .actor-details p {
-    margin: 0;
-  }
+  margin-top: 10px;
+}
+
+.actor-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.actor-image {
+  width: 120px; /* Adjust the size as needed */
+  height: auto;
+  margin-right: 10px;
+}
+
+.actor-details {
+  flex: 1; /* Take up remaining space */
+}
+
+.actor-details p {
+  margin: 0;
+}
+
+.text-center {
+  margin-top: 80px;
+}
+
+
+.searchMovies {
+  margin-top: 70px;
+  background-color: #ffffff;
+}
+
+/* Year Filter Style */
+
+.year-slider-container {
+  display: flex;
+  align-items: center;
+}
+
+.year-select {
+  margin: 0 10px; /* Add some margin around the dropdown */
+  background-color: #535353; /* Set background color */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 4px; /* Add border radius for rounded corners */
+  font-size: 16px; /* Adjust font size */
+  color: #333; /* Set text color */
+}
+
+/* Cinema Location Button Style */
+
+.cinema-menu {
+  margin: 0 10px; /* Add some margin around the dropdown */
+  background-color: #535353; /* Set background color */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 4px; /* Add border radius for rounded corners */
+  font-size: 16px; /* Adjust font size */
+  color: #333; /* Set text color */
+}
+
+.cinema-select {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+
+.cinema-select > button {
+margin-right: 10px; /* Adjust the margin as needed */
+}
+
+
+/* Calendar
+
+/* Override calendar colors */
+.react-calendar {
+max-width: 100%;
+background: #ff0000; /* Set background color */
+border-radius: 8px; /* Set border radius */
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.react-calendar__tile {
+padding: 0.5em 0.75em;
+}
+
+.react-calendar__tile--active {
+background: #007bff; /* Set active date background color */
+color: #fff; /* Set active date text color */
+}
+
+.react-calendar__tile--now {
+background: #f0f0f0; /* Set today's date background color */
+}
+
+.react-calendar__tile--hasActive {
+background: #f0f0f0; /* Set date with active date background color */
+}
+
+.react-calendar__tile--active:hover {
+background: #0056b3; /* Set active date hover background color */
+}
+
+.react-calendar__tile--now:hover {
+background: #ccc; /* Set today's date hover background color */
+}
+
+.react-calendar__tile--hasActive:hover {
+background: #ccc; /* Set date with active date hover background color */
+}
+
+
+.filter-container {
+margin: 0 auto; /* Center horizontally */
+}
+
+.duration-buttons-container {
+margin-top: 10px;
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+}
+
+/*
+.duration-buttons-container button {
+padding: 10px;
+background-color: #2d5fe9;
+color: #fff;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+*/
+/*
+.duration-buttons-container button:hover {
+background-color: #0056b3;
+}
+*/
+.toggle-filters-button {
+  display: flex;
+  justify-content: center; /* Align items horizontally to the center */
+}
+
+.toggle-filters-button button {
+  background-color: #2d5fe9; /* Green background */
+  border: none;
+  color: white;
+  padding: 10px 20px; /* Adjust padding as needed */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.toggle-filters-button button:hover {
+  background-color: #0056b3; /* Darker green on hover */
+}
+
+.button-group {
+  display: flex;
+  gap: 5px; /* Adjust the gap between buttons */
+}
+
+/* Styling for primary buttons */
+.movie-buttons {
+  background-color: #2d5fe9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for primary buttons */
+.movie-buttons:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.all-filters-container {
+  margin: 0 auto; /* Center horizontally */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Align items with space between */
+  margin-bottom: 10px; /* Add some margin between elements */
+
+}
+
+.filter-label {
+  width: 60px; /* Adjust the width as needed */
+  margin-right: 10px;
+  font-weight: bold; /* Optional: Make the label text bold */
+  color:white;
+}
+
+
 

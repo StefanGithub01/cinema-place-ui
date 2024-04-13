@@ -1,12 +1,17 @@
-import React from 'react'
+import React from 'react';
 
 export const FooterComponent = () => {
   return (
-    <div>
-
-     <footer className = 'footer'>
-     <span>All right reserved to Mandris Stefan Alexandru 2024</span>
+    <footer style={{ 
+      position: 'fixed',
+      bottom: 0,
+      width: '100%',
+      textAlign: 'center', 
+      backgroundColor: 'black', 
+      color: 'white', 
+      padding: '5px',
+    }}>
+    {/*<span>All rights reserved to Mandris Stefan Alexandru 2024</span>*/}
     </footer>   
-    </div>
-  )
-}
+  );
+};
